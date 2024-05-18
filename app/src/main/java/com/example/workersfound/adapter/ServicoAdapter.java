@@ -1,5 +1,6 @@
 package com.example.workersfound.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.workersfound.databinding.ServicoItemBinding;
+import com.example.workersfound.model.Professional;
 import com.example.workersfound.model.Servico;
+import com.example.workersfound.view.ProfessionalsListing;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ServicoAdapter extends RecyclerView.Adapter<ServicoAdapter.ServicoViewHolder> {
 
@@ -45,13 +49,23 @@ public class ServicoAdapter extends RecyclerView.Adapter<ServicoAdapter.ServicoV
         return listaServicos.size();
     }
 
-    public static class ServicoViewHolder extends RecyclerView.ViewHolder{
+    public class ServicoViewHolder extends RecyclerView.ViewHolder{
 
         ServicoItemBinding binding;
 
         public ServicoViewHolder(ServicoItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+            String typeOfService = this.binding.serviceTypeTxt.getText().toString();
+            binding.getRoot().setOnClickListener(view -> {
+
+                int position = getAdapterPosition(); //elemento que está sendo tratado
+                if (position != RecyclerView.NO_POSITION){ //verifica se há algum elemento
+                    Intent intent = new Intent(context, ProfessionalsListing.class);
+                    intent.putExtra("service_type", listaServicos.get(position).getNome());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
