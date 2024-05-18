@@ -49,7 +49,6 @@ public class Home extends AppCompatActivity {
     private void getServicos(){
         //fake database. É aqui que acontecerá a conexão com o banco de dados
         ServicoBD bd = ServicoBD.getInstance();
-
         listaServicos.addAll(bd.getDataList());
 
 

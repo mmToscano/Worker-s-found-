@@ -11,19 +11,17 @@ public class Professional {
 
     private Integer img;
     private String name;
-
     private String companyName;
-
     private String typeOfService;
-    private String cidade;
-    private ArrayList<String> servicos = new ArrayList<>();
+    private Address address;
+    private ArrayList<ProfessionalService> servicos = new ArrayList<>();
 
-    public Professional(Integer img, String name, String companyName, String typeOfService, String cidade) {
+    public Professional(Integer img, String name, String companyName, String typeOfService, Address address) {
         this.img = img;
         this.name = name;
         this.companyName = companyName;
         this.typeOfService = typeOfService;
-        this.cidade = cidade;
+        this.address = address;
     }
 
     public String getName() {
@@ -42,15 +40,15 @@ public class Professional {
         this.typeOfService = typeOfService;
     }
 
-    public String getCidade() {
-        return cidade;
+    public Address getAddres() {
+        return address;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public ArrayList<String> getServicos() {
+    public ArrayList<ProfessionalService> getServicos() {
         return servicos;
     }
 

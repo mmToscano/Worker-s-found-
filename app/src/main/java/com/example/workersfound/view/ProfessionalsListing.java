@@ -35,11 +35,13 @@ public class ProfessionalsListing extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+        //cria o recyclerView e habilita ele para receber elementos
         RecyclerView recyclerViewProfessionals = binding.recyclerViewProfessionals;
         recyclerViewProfessionals.setLayoutManager(new GridLayoutManager(this, 1));
         professionalAdapter = new ProfessionalAdapter(this, listaProfessionals);
         recyclerViewProfessionals.setHasFixedSize(true);
         recyclerViewProfessionals.setAdapter(professionalAdapter);
+        //preenche o array que será usado no recyclerView
         getProfessionals();
     }
 

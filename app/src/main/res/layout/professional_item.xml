@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
     android:orientation="vertical"
     android:background="@drawable/rounded_background"
     android:elevation="20dp">
@@ -59,6 +62,7 @@
             android:id="@+id/userCompanyNameTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="Launge barbearia" />
 
         <TextView

@@ -56,7 +56,6 @@ public class ServicoAdapter extends RecyclerView.Adapter<ServicoAdapter.ServicoV
         public ServicoViewHolder(ServicoItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-            String typeOfService = this.binding.serviceTypeTxt.getText().toString();
             binding.getRoot().setOnClickListener(view -> {
 
                 int position = getAdapterPosition(); //elemento que está sendo tratado

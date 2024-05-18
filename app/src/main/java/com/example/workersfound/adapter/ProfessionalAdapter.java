@@ -8,7 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.workersfound.databinding.ProfessionalItemBinding;
+import com.example.workersfound.model.Address;
 import com.example.workersfound.model.Professional;
+import com.example.workersfound.model.ProfessionalService;
 
 import java.util.ArrayList;
 
@@ -35,13 +37,14 @@ public class ProfessionalAdapter extends RecyclerView.Adapter<ProfessionalAdapte
     public void onBindViewHolder(@NonNull ProfessionalAdapter.ProfessionalViewHolder holder, int position) {
 
         String servicos = "";
-        for(String item: listaProfessionals.get(position).getServicos()){
-            servicos += item + " ";
+        for(ProfessionalService item: listaProfessionals.get(position).getServicos()){
+            servicos += item.getType() + " - R$ " + item.getPrice() + "\n";
         }
+        Address address = listaProfessionals.get(position).getAddres();
 
         holder.binding.userIcon.setImageResource(listaProfessionals.get(position).getImg());
         holder.binding.userNameTxt.setText(listaProfessionals.get(position).getName());
-        holder.binding.userAddressTxt.setText(listaProfessionals.get(position).getCidade());
+        holder.binding.userAddressTxt.setText(address.getDistrict() + " - " + address.getStreetName() + ", " + address.getHouseNumber());
         holder.binding.userCompanyNameTxt.setText(listaProfessionals.get(position).getCompanyName());
         holder.binding.serviceListTxt.setText(servicos);
     }

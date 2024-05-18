@@ -3,7 +3,9 @@ package com.example.workersfound.fakeDatabases;
 import android.graphics.Color;
 
 import com.example.workersfound.R;
+import com.example.workersfound.model.Address;
 import com.example.workersfound.model.Professional;
+import com.example.workersfound.model.ProfessionalService;
 import com.example.workersfound.model.Servico;
 
 import java.util.ArrayList;
@@ -18,15 +20,15 @@ public class ServicoBD {
     private ServicoBD() {
         dataList = new ArrayList<>();
 
-        Professional professional1 = new Professional(R.drawable.user_ic, "Joao", "Launge barbearia", "BARBEIRO", "Uberlandia");
-        Professional professional2 = new Professional(R.drawable.user_ic,"Maria","Maria cortes", "CABELEIREIRO", "Uberlandia");
-        Professional professional3 = new Professional(R.drawable.user_ic,"Jonas","Jonas bacana", "COSTUREIRO", "Uberlandia");
-        Professional professional4 = new Professional(R.drawable.user_ic,"Zuleide","Zuleide maluca", "MANICURE", "Uberlandia");
+        Professional professional1 = new Professional(R.drawable.user_ic, "Joao", "Launge barbearia", "BARBEIRO", new Address("Uberlândia", "Jardim das palmeiras", "R. da secretária", "000"));
+        Professional professional2 = new Professional(R.drawable.user_ic,"Maria","Maria cortes", "CABELEIREIRO", new Address("Uberlândia", "Jardim Patrícia", "R. Valdivíno josé Gomes", "000"));
+        Professional professional3 = new Professional(R.drawable.user_ic,"Jonas","Jonas bacana", "COSTUREIRO",  new Address("Uberlândia", "Luizote de freitas", "R. Roberto Margonari", "000"));
+        Professional professional4 = new Professional(R.drawable.user_ic,"Zuleide","Zuleide maluca", "MANICURE", new Address("Uberlândia", "Tocantins", "R. Agenor Borges", "000"));
 
-        professional1.getServicos().add("corte de cabelo");
-        professional2.getServicos().add("corte de cabelo");
-        professional3.getServicos().add("costura");
-        professional4.getServicos().add("pintar unha");
+        professional1.getServicos().add(new ProfessionalService("corte de cabelo", 35.0d));
+        professional2.getServicos().add(new ProfessionalService("corte de cabelo", 35.0d));
+        professional3.getServicos().add(new ProfessionalService("costura", 20.0d));
+        professional4.getServicos().add(new ProfessionalService("pintar unha", 30.0));
 
         Servico servico1 = new Servico(R.drawable.beard_ic, "BARBEIRO", Color.parseColor("#2F528F"));
         Servico servico2 = new Servico(R.drawable.hairmaker_ic, "CABELEIREIRO", Color.parseColor("#FF09DC"));
