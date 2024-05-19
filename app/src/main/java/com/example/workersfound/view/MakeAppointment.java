@@ -9,13 +9,16 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.workersfound.R;
+import com.example.workersfound.databinding.ActivityMakeAppointmentBinding;
 
-public class scheduling extends AppCompatActivity {
+public class MakeAppointment extends AppCompatActivity {
+
+    private ActivityMakeAppointmentBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scheduling);
+        setContentView(binding.getRoot());
 
     }
 }

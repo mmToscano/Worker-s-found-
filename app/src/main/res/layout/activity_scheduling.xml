@@ -8,7 +8,7 @@
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
     android:orientation="vertical"
-    tools:context=".view.scheduling">
+    tools:context=".view.Scheduling">
 
     <TextView
         android:layout_width="match_parent"
@@ -55,20 +55,108 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Matheus Toscano Moraes"
+            android:textColor="@color/black"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
+            android:id="@+id/userEmailTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="m.moraes11@jlksadhflasf"
+            android:textColor="@color/black"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             app:layout_constraintStart_toEndOf="@id/cardView"
             app:layout_constraintTop_toBottomOf="@id/userNameTxt"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="34 999999999"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toEndOf="@id/cardView"
+            app:layout_constraintTop_toBottomOf="@id/userEmailTxt"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agendamentos"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="30dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSchedules"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:background="@color/white"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:backgroundTint="@color/darkblue"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="bottom"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/homeButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/return_arrow_ic" />
+
+        <ImageView
+            android:id="@+id/userButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/user_ic" />
+
+        <ImageView
+            android:id="@+id/calendarButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/calendar_ic" />
+
+        <ImageView
+            android:id="@+id/settingsButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/settings_ic" />
+
+    </LinearLayout>
 
 </LinearLayout>

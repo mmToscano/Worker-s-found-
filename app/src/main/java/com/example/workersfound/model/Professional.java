@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class Professional {
 
+    private Integer professionalId;
     private Integer img;
     private String name;
     private String companyName;
@@ -16,12 +17,19 @@ public class Professional {
     private Address address;
     private ArrayList<ProfessionalService> servicos = new ArrayList<>();
 
-    public Professional(Integer img, String name, String companyName, String typeOfService, Address address) {
+    public Professional(Integer professionalId, Integer img, String name, String companyName, String typeOfService, Address address) {
+        this.professionalId = professionalId;
         this.img = img;
         this.name = name;
         this.companyName = companyName;
         this.typeOfService = typeOfService;
         this.address = address;
+    }
+    public Integer getProfessionalId() {
+        return professionalId;
+    }
+    public void setProfessionalId(Integer professionalId) {
+        this.professionalId = professionalId;
     }
 
     public String getName() {
