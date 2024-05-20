@@ -7,8 +7,9 @@
     android:layout_height="match_parent"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
+    android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".view.Scheduling">
+    tools:context=".view.Profile">
 
     <TextView
         android:layout_width="match_parent"
@@ -29,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="@color/white"
         android:padding="15dp">
 
         <androidx.cardview.widget.CardView
@@ -54,53 +56,53 @@
             android:id="@+id/userNameTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Matheus Toscano Moraes"
-            android:textColor="@color/black"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:text="Matheus Toscano Moraes"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/userEmailTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="m.moraes11@jlksadhflasf"
-            android:textColor="@color/black"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
+            android:text="m.moraes11@jlksadhflasf"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@id/cardView"
-            app:layout_constraintTop_toBottomOf="@id/userNameTxt"/>
+            app:layout_constraintTop_toBottomOf="@id/userNameTxt" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="34 999999999"
-            android:textColor="@color/black"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
+            android:text="34 999999999"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@id/cardView"
-            app:layout_constraintTop_toBottomOf="@id/userEmailTxt"/>
+            app:layout_constraintTop_toBottomOf="@id/userEmailTxt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
         android:text="Agendamentos"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="30dp" />
+        android:textSize="20sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/black"
-        android:layout_marginTop="5dp"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="30dp"
+        android:background="@color/black" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSchedules"
@@ -108,19 +110,19 @@
         android:layout_height="0dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
-        android:background="@color/white"/>
+        android:background="@color/white" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:backgroundTint="@color/darkblue"
         android:layout_marginStart="80dp"
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="50dp"
-        android:gravity="center"/>
+        android:backgroundTint="@color/darkblue"
+        android:gravity="center"
+        android:text="Logout"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"

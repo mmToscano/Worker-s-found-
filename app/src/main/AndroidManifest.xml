@@ -16,7 +16,7 @@
             android:name=".view.MakeAppointment"
             android:exported="false" />
         <activity
-            android:name=".view.Scheduling"
+            android:name=".view.Profile"
             android:exported="false" />
         <activity
             android:name=".view.ProfessionalsListing"

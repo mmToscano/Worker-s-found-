@@ -1,6 +1,7 @@
 package com.example.workersfound.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -11,6 +12,8 @@ import com.example.workersfound.databinding.ProfessionalItemBinding;
 import com.example.workersfound.model.Address;
 import com.example.workersfound.model.Professional;
 import com.example.workersfound.model.ProfessionalService;
+import com.example.workersfound.view.MakeAppointment;
+import com.example.workersfound.view.ProfessionalsListing;
 
 import java.util.ArrayList;
 
@@ -54,13 +57,21 @@ public class ProfessionalAdapter extends RecyclerView.Adapter<ProfessionalAdapte
         return listaProfessionals.size();
     }
 
-    public static class ProfessionalViewHolder extends RecyclerView.ViewHolder{
+    public class ProfessionalViewHolder extends RecyclerView.ViewHolder{
 
         ProfessionalItemBinding binding;
 
         public ProfessionalViewHolder(ProfessionalItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+            binding.getRoot().setOnClickListener(view ->{
+
+                int position = getAdapterPosition();
+                if(position != RecyclerView.NO_POSITION){
+                    Intent intent = new Intent(context, MakeAppointment.class);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

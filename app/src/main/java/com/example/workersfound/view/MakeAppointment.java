@@ -18,6 +18,7 @@ public class MakeAppointment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityMakeAppointmentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
     }

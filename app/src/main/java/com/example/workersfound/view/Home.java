@@ -1,7 +1,9 @@
 package com.example.workersfound.view;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,12 +38,20 @@ public class Home extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+        //cria o recyclerView com os serviços
         RecyclerView recyclerViewServicos = binding.recyclerViewServicos;
         recyclerViewServicos.setLayoutManager(new GridLayoutManager(this, 1));
         servicoAdapter = new ServicoAdapter(this, listaServicos);
         recyclerViewServicos.setHasFixedSize(true);
         recyclerViewServicos.setAdapter(servicoAdapter);
         getServicos();
+
+        //onClick para abrir o perfil
+        //dá para tentar mandar por aqui as cores. Talvez seja uma boa ideia
+        binding.userButton.setOnClickListener(view -> {
+            Intent intent = new Intent(Home.this, Profile.class);
+            startActivity(intent);
+        });
 
     }
 
