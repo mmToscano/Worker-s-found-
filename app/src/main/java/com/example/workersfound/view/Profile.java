@@ -1,11 +1,13 @@
 package com.example.workersfound.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.workersfound.MainActivity;
 import com.example.workersfound.R;
 import com.example.workersfound.adapter.ScheduleAdapter;
 import com.example.workersfound.adapter.ServicoAdapter;
@@ -38,6 +40,15 @@ public class Profile extends AppCompatActivity {
         recyclerViewServicos.setHasFixedSize(true);
         recyclerViewServicos.setAdapter(scheduleAdapter);
         getSchedules();
+
+        binding.returnButton.setOnClickListener(view ->{
+            finish();
+        });
+
+        binding.logoutButton.setOnClickListener(view -> {
+            Intent intent = new Intent(Profile.this, MainActivity.class);
+            startActivity(intent);
+        });
 
     }
 

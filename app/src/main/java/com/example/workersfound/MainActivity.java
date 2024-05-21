@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+        binding.txtEmail.setText("");
+        binding.txtPassword.setText("");
+
         binding.buttonLogin.setOnClickListener(view -> {
             String email = binding.txtEmail.getText().toString();
             String senha = binding.txtPassword.getText().toString();

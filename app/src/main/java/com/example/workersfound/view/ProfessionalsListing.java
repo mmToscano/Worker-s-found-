@@ -1,5 +1,6 @@
 package com.example.workersfound.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -41,8 +42,16 @@ public class ProfessionalsListing extends AppCompatActivity {
         professionalAdapter = new ProfessionalAdapter(this, listaProfessionals);
         recyclerViewProfessionals.setHasFixedSize(true);
         recyclerViewProfessionals.setAdapter(professionalAdapter);
-        //preenche o array que será usado no recyclerView
         getProfessionals();
+
+        binding.returnButton.setOnClickListener(view ->{
+            finish();
+        });
+
+        binding.userButton.setOnClickListener(view ->{
+            Intent intent = new Intent(ProfessionalsListing.this, Profile.class);
+            startActivity(intent);
+        });
     }
 
     private void getProfessionals(){

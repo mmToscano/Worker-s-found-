@@ -1,8 +1,9 @@
 package com.example.workersfound.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Servico {
+public class Servico implements Serializable {
 
     private Integer img;
     private String nome;

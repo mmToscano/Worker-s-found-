@@ -10,6 +10,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.workersfound.R;
 import com.example.workersfound.databinding.ActivityMakeAppointmentBinding;
+import com.example.workersfound.fakeDatabases.ScheduleBD;
+import com.example.workersfound.model.Professional;
+import com.example.workersfound.model.Schedule;
 
 public class MakeAppointment extends AppCompatActivity {
 
@@ -20,6 +23,26 @@ public class MakeAppointment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMakeAppointmentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Professional professional = getIntent().getExtras() != null ? (Professional) getIntent().getSerializableExtra("which_professional") : null;
+
+        binding.buttonAgendar.setOnClickListener(view -> {
+            ScheduleBD bd = ScheduleBD.getInstance();
+
+            int year = binding.datePicker.getYear();
+            int month = binding.datePicker.getMonth();
+            int day = binding.datePicker.getDayOfMonth();
+
+            int hour = binding.timePicker.getHour();
+            int minutes = binding.timePicker.getMinute();
+
+            bd.addData(new Schedule(professional, day, month, year, hour, minutes));
+            finish();
+        });
+
+        binding.returnButton.setOnClickListener(view ->{
+            finish();
+        });
 
     }
 }

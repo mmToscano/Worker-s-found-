@@ -53,6 +53,10 @@ public class Home extends AppCompatActivity {
             startActivity(intent);
         });
 
+        Intent intent = getIntent();
+        binding.welcomingUserTxt.setText("Seja bem vindo, " + intent.getExtras().getString("nome"));
+
+
     }
 
     //método que simula o fetch de um banco de dados

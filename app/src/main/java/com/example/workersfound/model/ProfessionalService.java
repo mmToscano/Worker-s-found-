@@ -1,6 +1,8 @@
 package com.example.workersfound.model;
 
-public class ProfessionalService {
+import java.io.Serializable;
+
+public class ProfessionalService implements Serializable {
 
     private String type;
     private Double price;

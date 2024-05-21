@@ -5,9 +5,10 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Professional {
+public class Professional implements Serializable {
 
     private Integer professionalId;
     private Integer img;

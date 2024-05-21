@@ -69,6 +69,7 @@ public class ProfessionalAdapter extends RecyclerView.Adapter<ProfessionalAdapte
                 int position = getAdapterPosition();
                 if(position != RecyclerView.NO_POSITION){
                     Intent intent = new Intent(context, MakeAppointment.class);
+                    intent.putExtra("which_professional", listaProfessionals.get(position));
                     context.startActivity(intent);
                 }
             });

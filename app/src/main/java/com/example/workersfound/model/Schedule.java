@@ -1,6 +1,8 @@
 package com.example.workersfound.model;
 
-public class Schedule {
+import java.io.Serializable;
+
+public class Schedule implements Serializable {
 
     private Professional professional;
     private int day;

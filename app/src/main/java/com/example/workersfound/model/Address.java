@@ -1,6 +1,8 @@
 package com.example.workersfound.model;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
 
     private String city;
 
