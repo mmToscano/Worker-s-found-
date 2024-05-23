@@ -3,6 +3,7 @@ package com.example.workersfound;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -12,12 +13,16 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.workersfound.databinding.ActivityMainBinding;
+import com.example.workersfound.fakeDatabases.UserBD;
+import com.example.workersfound.model.User;
 import com.example.workersfound.view.Home;
+import com.example.workersfound.view.Register;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
+    public UserBD bd = UserBD.getInstance();
     private ActivityMainBinding binding;
 
     @Override
@@ -43,11 +48,22 @@ public class MainActivity extends AppCompatActivity {
                 mensagem(view, "Coloque sua senha");
             } else if(senha.length() <= 5){
                 mensagem(view, "A senha é muito curta");
+            }else if(verificarSeExiste(email, senha) != null){
+                navegarParaHome(bd.getUser());
             }else{
-                navegarParaHome(email);
+                mensagem(view, "O email ou a senha estão incorretos");
             }
         });
 
+        binding.buttonRegister.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, Register.class);
+            startActivity(intent);
+        });
+
+    }
+
+    private User verificarSeExiste(String email, String senha){
+        return bd.getUserBy(email, senha);
 
     }
 
@@ -59,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
         snackbar.show();
     }
 
-    private void navegarParaHome(String nome){
+    private void navegarParaHome(User user){
         Intent intent = new Intent(MainActivity.this, Home.class); //cria a intent para mudar de página
-        intent.putExtra("nome", nome); //coloca na intent uma info que vai ser enviada para a outra activity
+        intent.putExtra("user", user.getNome()); //coloca na intent uma info que vai ser enviada para a outra activity
         startActivity(intent);
     }
 }

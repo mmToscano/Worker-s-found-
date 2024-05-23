@@ -54,7 +54,7 @@ public class Home extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        binding.welcomingUserTxt.setText("Seja bem vindo, " + intent.getExtras().getString("nome"));
+        binding.welcomingUserTxt.setText("Seja bem vindo, " + intent.getExtras().getString("user"));
 
 
     }

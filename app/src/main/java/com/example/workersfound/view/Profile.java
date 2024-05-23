@@ -2,6 +2,9 @@ package com.example.workersfound.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.MotionEvent;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,7 +16,9 @@ import com.example.workersfound.adapter.ScheduleAdapter;
 import com.example.workersfound.adapter.ServicoAdapter;
 import com.example.workersfound.databinding.ActivityProfileBinding;
 import com.example.workersfound.fakeDatabases.ScheduleBD;
+import com.example.workersfound.fakeDatabases.UserBD;
 import com.example.workersfound.model.Schedule;
+import com.example.workersfound.model.User;
 
 import java.util.ArrayList;
 
@@ -24,6 +29,8 @@ public class Profile extends AppCompatActivity {
     private ScheduleAdapter scheduleAdapter;
     private ArrayList<Schedule> listaSchedules = new ArrayList<>();
 
+    private User user = UserBD.getInstance().getUser();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +40,10 @@ public class Profile extends AppCompatActivity {
         if(getSupportActionBar() != null){
             getSupportActionBar().hide();
         }
+
+        binding.userEmailTxt.setText(user.getEmail());
+        binding.userNameTxt.setText(user.getNome());
+        binding.userPhoneNumberTxt.setText(user.getPhoneNumber());
 
         RecyclerView recyclerViewServicos = binding.recyclerViewSchedules;
         recyclerViewServicos.setLayoutManager(new GridLayoutManager(this, 1));
@@ -49,6 +60,8 @@ public class Profile extends AppCompatActivity {
             Intent intent = new Intent(Profile.this, MainActivity.class);
             startActivity(intent);
         });
+
+
 
     }
 
