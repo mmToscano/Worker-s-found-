@@ -12,6 +12,7 @@ import com.example.workersfound.databinding.ProfessionalItemBinding;
 import com.example.workersfound.model.Address;
 import com.example.workersfound.model.Professional;
 import com.example.workersfound.model.ProfessionalService;
+import com.example.workersfound.model.Professional;
 import com.example.workersfound.view.MakeAppointment;
 import com.example.workersfound.view.ProfessionalsListing;
 
@@ -21,11 +22,13 @@ public class ProfessionalAdapter extends RecyclerView.Adapter<ProfessionalAdapte
 
     private final Context context;
     private final ArrayList<Professional> listaProfessionals;
+    private final ArrayList<Professional> listaFiltradaProfessionals;
 
 
     public ProfessionalAdapter(Context context, ArrayList<Professional> listaProfessionals) {
         this.context = context;
         this.listaProfessionals = listaProfessionals;
+        this.listaFiltradaProfessionals = new ArrayList<>(listaProfessionals);
     }
 
     @NonNull
@@ -39,22 +42,37 @@ public class ProfessionalAdapter extends RecyclerView.Adapter<ProfessionalAdapte
     @Override
     public void onBindViewHolder(@NonNull ProfessionalAdapter.ProfessionalViewHolder holder, int position) {
 
-        String servicos = "";
-        for(ProfessionalService item: listaProfessionals.get(position).getServicos()){
-            servicos += item.getType() + " - R$ " + item.getPrice() + "\n";
+        String Professionals = "";
+        for(ProfessionalService item: listaFiltradaProfessionals.get(position).getServicos()){
+            Professionals += item.getType() + " - R$ " + item.getPrice() + "\n";
         }
-        Address address = listaProfessionals.get(position).getAddres();
+        Address address = listaFiltradaProfessionals.get(position).getAddres();
 
-        holder.binding.userIcon.setImageResource(listaProfessionals.get(position).getImg());
-        holder.binding.userNameTxt.setText(listaProfessionals.get(position).getName());
+        holder.binding.userIcon.setImageResource(listaFiltradaProfessionals.get(position).getImg());
+        holder.binding.userNameTxt.setText(listaFiltradaProfessionals.get(position).getName());
         holder.binding.userAddressTxt.setText(address.getDistrict() + " - " + address.getStreetName() + ", " + address.getHouseNumber());
-        holder.binding.userCompanyNameTxt.setText(listaProfessionals.get(position).getCompanyName());
-        holder.binding.serviceListTxt.setText(servicos);
+        holder.binding.userCompanyNameTxt.setText(listaFiltradaProfessionals.get(position).getCompanyName());
+        holder.binding.serviceListTxt.setText(Professionals);
     }
 
     @Override
     public int getItemCount() {
-        return listaProfessionals.size();
+        return listaFiltradaProfessionals.size();
+    }
+
+    public void filter(String searchText) {
+        listaFiltradaProfessionals.clear();
+        if (searchText.isEmpty()) {
+            listaFiltradaProfessionals.addAll(listaProfessionals);
+        } else {
+            searchText = searchText.toLowerCase();
+            for (Professional professional : listaProfessionals) {
+                if (professional.getName().toLowerCase().contains(searchText)) {
+                    listaFiltradaProfessionals.add(professional);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
     public class ProfessionalViewHolder extends RecyclerView.ViewHolder{
@@ -69,7 +87,7 @@ public class ProfessionalAdapter extends RecyclerView.Adapter<ProfessionalAdapte
                 int position = getAdapterPosition();
                 if(position != RecyclerView.NO_POSITION){
                     Intent intent = new Intent(context, MakeAppointment.class);
-                    intent.putExtra("which_professional", listaProfessionals.get(position));
+                    intent.putExtra("which_professional", listaFiltradaProfessionals.get(position));
                     context.startActivity(intent);
                 }
             });

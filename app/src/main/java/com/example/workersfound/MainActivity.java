@@ -13,6 +13,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.workersfound.databinding.ActivityMainBinding;
+import com.example.workersfound.fakeDatabases.ProfessionalBD;
+import com.example.workersfound.fakeDatabases.ScheduleBD;
+import com.example.workersfound.fakeDatabases.ServicoBD;
 import com.example.workersfound.fakeDatabases.UserBD;
 import com.example.workersfound.model.User;
 import com.example.workersfound.view.Home;
@@ -59,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, Register.class);
             startActivity(intent);
         });
+
+        UserBD UserBd = UserBD.getInstance();
+        ProfessionalBD professionalBD = ProfessionalBD.getInstance();
+        ServicoBD servicoBD = ServicoBD.getInstance();
+        ScheduleBD scheduleBD = ScheduleBD.getInstance();
 
     }
 

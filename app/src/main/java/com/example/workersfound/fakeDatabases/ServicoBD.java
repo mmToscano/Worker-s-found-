@@ -19,26 +19,21 @@ public class ServicoBD {
 
     private ServicoBD() {
         dataList = new ArrayList<>();
-
-        Professional professional1 = new Professional(1, R.drawable.user_ic, "Joao", "Launge barbearia", "BARBEIRO", new Address("Uberlândia", "Jardim das palmeiras", "R. da secretária", "000"));
-        Professional professional2 = new Professional(2, R.drawable.user_ic,"Maria","Maria cortes", "CABELEIREIRO", new Address("Uberlândia", "Jardim Patrícia", "R. Valdivíno josé Gomes", "000"));
-        Professional professional3 = new Professional(3, R.drawable.user_ic,"Jonas","Jonas bacana", "COSTUREIRO",  new Address("Uberlândia", "Luizote de freitas", "R. Roberto Margonari", "000"));
-        Professional professional4 = new Professional(4, R.drawable.user_ic,"Zuleide","Zuleide maluca", "MANICURE", new Address("Uberlândia", "Tocantins", "R. Agenor Borges", "000"));
-
-        professional1.getServicos().add(new ProfessionalService("corte de cabelo", 35.0d));
-        professional2.getServicos().add(new ProfessionalService("corte de cabelo", 35.0d));
-        professional3.getServicos().add(new ProfessionalService("costura", 20.0d));
-        professional4.getServicos().add(new ProfessionalService("pintar unha", 30.0));
+        ProfessionalBD professionalBD = ProfessionalBD.getInstance();
 
         Servico servico1 = new Servico(R.drawable.beard_ic, "BARBEIRO", Color.parseColor("#2F528F"));
         Servico servico2 = new Servico(R.drawable.hairmaker_ic, "CABELEIREIRO", Color.parseColor("#FF09DC"));
         Servico servico3 = new Servico(R.drawable.dressmaker_ic, "COSTUREIRO", Color.parseColor("#FFD966"));
         Servico servico4 = new Servico(R.drawable.makeup_ic, "MANICURE", Color.parseColor("#00D0B2"));
 
-        servico1.getProfessionals().add(professional1);
-        servico2.getProfessionals().add(professional2);
-        servico3.getProfessionals().add(professional3);
-        servico4.getProfessionals().add(professional4);
+        servico1.getProfessionals().add(professionalBD.getProfessionalById(1));
+        servico2.getProfessionals().add(professionalBD.getProfessionalById(2));
+        servico3.getProfessionals().add(professionalBD.getProfessionalById(3));
+        servico4.getProfessionals().add(professionalBD.getProfessionalById(4));
+        servico1.getProfessionals().add(professionalBD.getProfessionalById(5));
+        servico2.getProfessionals().add(professionalBD.getProfessionalById(6));
+        servico3.getProfessionals().add(professionalBD.getProfessionalById(7));
+        servico4.getProfessionals().add(professionalBD.getProfessionalById(8));
 
         dataList.add(servico1);
         dataList.add(servico2);

@@ -2,6 +2,7 @@ package com.example.workersfound.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.SearchView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.example.workersfound.R;
 import com.example.workersfound.adapter.ProfessionalAdapter;
 import com.example.workersfound.adapter.ServicoAdapter;
 import com.example.workersfound.databinding.ActivityProfessionalsListingBinding;
+import com.example.workersfound.fakeDatabases.ProfessionalBD;
 import com.example.workersfound.fakeDatabases.ServicoBD;
 import com.example.workersfound.model.Professional;
 
@@ -52,12 +54,28 @@ public class ProfessionalsListing extends AppCompatActivity {
             Intent intent = new Intent(ProfessionalsListing.this, Profile.class);
             startActivity(intent);
         });
+
+        SearchView searchView = binding.pesquisa;
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                professionalAdapter.filter(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                professionalAdapter.filter(newText);
+                return true;
+            }
+        });
     }
 
     private void getProfessionals(){
         String type = getIntent().getExtras() != null ? getIntent().getExtras().getString("service_type") : null;
 
-        ServicoBD bd = ServicoBD.getInstance();
+        ProfessionalBD bd = ProfessionalBD.getInstance();
         listaProfessionals.addAll(bd.getProfessionalsByType(type));
+        professionalAdapter.filter("");
     }
 }

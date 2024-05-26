@@ -29,16 +29,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        app:cardBackgroundColor="@color/spring_green"
-        app:cardCornerRadius="10dp"
-        android:layout_marginBottom="25dp"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
