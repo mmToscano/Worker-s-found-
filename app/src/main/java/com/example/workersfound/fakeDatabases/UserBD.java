@@ -15,7 +15,7 @@ public class UserBD {
 
 
     private UserBD() {
-        user = new User(0, "a", "123456", "matheus", "MG", "Uberlândia", "bairro exemplo", "rua exemplo", "000", "34 999999999");
+        //user = new User(0, "a", "123456", "matheus", "MG", "Uberlândia", "bairro exemplo", "rua exemplo", "000", "34 999999999");
 
     }
 

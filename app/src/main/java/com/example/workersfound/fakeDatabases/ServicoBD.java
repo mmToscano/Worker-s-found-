@@ -3,42 +3,40 @@ package com.example.workersfound.fakeDatabases;
 import android.graphics.Color;
 
 import com.example.workersfound.R;
-import com.example.workersfound.model.Address;
 import com.example.workersfound.model.Professional;
-import com.example.workersfound.model.ProfessionalService;
-import com.example.workersfound.model.Servico;
+import com.example.workersfound.model.Service;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class ServicoBD {
 
-    private ArrayList<Servico> dataList;
+    private ArrayList<Service> dataList;
     private static ServicoBD instance;
 
 
     private ServicoBD() {
         dataList = new ArrayList<>();
-        ProfessionalBD professionalBD = ProfessionalBD.getInstance();
-
-        Servico servico1 = new Servico(R.drawable.beard_ic, "BARBEIRO", Color.parseColor("#2F528F"));
-        Servico servico2 = new Servico(R.drawable.hairmaker_ic, "CABELEIREIRO", Color.parseColor("#FF09DC"));
-        Servico servico3 = new Servico(R.drawable.dressmaker_ic, "COSTUREIRO", Color.parseColor("#FFD966"));
-        Servico servico4 = new Servico(R.drawable.makeup_ic, "MANICURE", Color.parseColor("#00D0B2"));
-
-        servico1.getProfessionals().add(professionalBD.getProfessionalById(1));
-        servico2.getProfessionals().add(professionalBD.getProfessionalById(2));
-        servico3.getProfessionals().add(professionalBD.getProfessionalById(3));
-        servico4.getProfessionals().add(professionalBD.getProfessionalById(4));
-        servico1.getProfessionals().add(professionalBD.getProfessionalById(5));
-        servico2.getProfessionals().add(professionalBD.getProfessionalById(6));
-        servico3.getProfessionals().add(professionalBD.getProfessionalById(7));
-        servico4.getProfessionals().add(professionalBD.getProfessionalById(8));
-
-        dataList.add(servico1);
-        dataList.add(servico2);
-        dataList.add(servico3);
-        dataList.add(servico4);
+//        ProfessionalBD professionalBD = ProfessionalBD.getInstance();
+//
+//        Service service1 = new Service(R.drawable.beard_ic, "BARBEIRO", Color.parseColor("#2F528F"));
+//        Service service2 = new Service(R.drawable.hairmaker_ic, "CABELEIREIRO", Color.parseColor("#FF09DC"));
+//        Service service3 = new Service(R.drawable.dressmaker_ic, "COSTUREIRO", Color.parseColor("#FFD966"));
+//        Service service4 = new Service(R.drawable.makeup_ic, "MANICURE", Color.parseColor("#00D0B2"));
+//
+//        service1.getProfessionals().add(professionalBD.getProfessionalById(1));
+//        service2.getProfessionals().add(professionalBD.getProfessionalById(2));
+//        service3.getProfessionals().add(professionalBD.getProfessionalById(3));
+//        service4.getProfessionals().add(professionalBD.getProfessionalById(4));
+//        service1.getProfessionals().add(professionalBD.getProfessionalById(5));
+//        service2.getProfessionals().add(professionalBD.getProfessionalById(6));
+//        service3.getProfessionals().add(professionalBD.getProfessionalById(7));
+//        service4.getProfessionals().add(professionalBD.getProfessionalById(8));
+//
+//        dataList.add(service1);
+//        dataList.add(service2);
+//        dataList.add(service3);
+//        dataList.add(service4);
 
     }
 
@@ -49,14 +47,14 @@ public class ServicoBD {
         return instance;
     }
 
-    public ArrayList<Servico> getDataList() {
+    public ArrayList<Service> getDataList() {
         return dataList;
     }
 
     public ArrayList<Professional> getProfessionals(){
         ArrayList<Professional> professionals = new ArrayList<>();
 
-        for(Servico item: dataList){
+        for(Service item: dataList){
             professionals.addAll(item.getProfessionals());
         }
 
@@ -66,8 +64,8 @@ public class ServicoBD {
     public ArrayList<Professional> getProfessionalsByType(String type){
         ArrayList<Professional> professionals = new ArrayList<>();
 
-        for(Servico item: dataList){
-            if(Objects.equals(item.getNome(), type)){
+        for(Service item: dataList){
+            if(Objects.equals(item.getName(), type)){
                 professionals.addAll(item.getProfessionals());
             }
 
@@ -76,11 +74,11 @@ public class ServicoBD {
         return professionals;
     }
 
-    public void addData(Servico data) {
+    public void addData(Service data) {
         dataList.add(data);
     }
 
-    public void removeData(Servico data) {
+    public void removeData(Service data) {
         dataList.remove(data);
     }
 

@@ -1,39 +1,33 @@
 package com.example.workersfound.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class User implements Serializable {
 
-    private Integer id;
+    private Integer userId;
     private String email;
     private String senha; //String porque isso aqui é senha. valores que não serão utilizados para operações matemáticas devem ser string, mesmo que sejam uma sequência de números
     private String nome;
-    private String estado;
-    private String cidade;
-    private String bairro;
-    private String rua;
-    private String numeroRua;
+    private Address address;
     private String phoneNumber;
+    private ArrayList<Schedule> schedules = new ArrayList<>();
 
-    public User(Integer id, String email, String senha, String nome, String estado, String cidade, String bairro, String rua, String numeroRua, String phoneNumber) {
-        this.id = id;
+    public User(Integer userId, String email, String senha, String nome, Address address, String phoneNumber) {
+        this.userId = userId;
         this.email = email;
         this.senha = senha;
         this.nome = nome;
-        this.estado = estado;
-        this.cidade = cidade;
-        this.bairro = bairro;
-        this.rua = rua;
-        this.numeroRua = numeroRua;
+        this.address = address;
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {
@@ -60,44 +54,12 @@ public class User implements Serializable {
         this.nome = nome;
     }
 
-    public String getEstado() {
-        return estado;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getRua() {
-        return rua;
-    }
-
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
-    public String getNumeroRua() {
-        return numeroRua;
-    }
-
-    public void setNumeroRua(String numeroRua) {
-        this.numeroRua = numeroRua;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getPhoneNumber() {

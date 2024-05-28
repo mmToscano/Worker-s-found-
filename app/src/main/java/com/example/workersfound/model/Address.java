@@ -4,17 +4,26 @@ import java.io.Serializable;
 
 public class Address implements Serializable {
 
+    private Integer addressId;
     private String city;
-
     private String district;
     private String streetName;
     private String houseNumber;
 
-    public Address(String city, String district, String streetName, String houseNumber) {
+    public Address(int addressId, String city, String district, String streetName, String houseNumber) {
+        this.addressId = addressId;
         this.city = city;
         this.district = district;
         this.streetName = streetName;
         this.houseNumber = houseNumber;
+    }
+
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 
     public String getCity() {

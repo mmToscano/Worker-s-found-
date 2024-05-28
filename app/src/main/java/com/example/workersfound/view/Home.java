@@ -8,11 +8,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.workersfound.R;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.workersfound.adapter.ServicoAdapter;
 import com.example.workersfound.databinding.ActivityHomeBinding;
 import com.example.workersfound.fakeDatabases.ServicoBD;
-import com.example.workersfound.model.Servico;
+import com.example.workersfound.model.Service;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -20,7 +28,11 @@ public class Home extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
     private ServicoAdapter servicoAdapter;
-    private ArrayList<Servico> listaServicos = new ArrayList<>();
+    private ArrayList<Service> listaServices = new ArrayList<>();
+
+    private String result;
+
+    private String URL = "https://jsonplaceholder.typicode.com/posts/1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +47,7 @@ public class Home extends AppCompatActivity {
         // Setup RecyclerView
         RecyclerView recyclerViewServicos = binding.recyclerViewServicos;
         recyclerViewServicos.setLayoutManager(new GridLayoutManager(this, 1));
-        servicoAdapter = new ServicoAdapter(this, listaServicos);
+        servicoAdapter = new ServicoAdapter(this, listaServices);
         recyclerViewServicos.setHasFixedSize(true);
         recyclerViewServicos.setAdapter(servicoAdapter);
         getServicos();  // Populate the list with initial data
@@ -68,7 +80,30 @@ public class Home extends AppCompatActivity {
 
     private void getServicos() {
         ServicoBD bd = ServicoBD.getInstance();
-        listaServicos.addAll(bd.getDataList());
+        listaServices.addAll(bd.getDataList());
         servicoAdapter.filter("");  // Faz com que mostre a lista completa quando inicializar a Home
+        System.out.println("Começando connection");
+        //getServicosAPI("https://jsonplaceholder.typicode.com/posts/1");
+    }
+
+    private void getServicosAPI(String URL){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                try{
+                    binding.textExample.setText(jsonObject.getString("title"));
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //binding.textExample.setText(error.toString());
+            }
+        });
+        queue.add(jsonObjectRequest);
+
     }
 }

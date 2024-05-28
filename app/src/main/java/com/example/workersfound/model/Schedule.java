@@ -4,20 +4,32 @@ import java.io.Serializable;
 
 public class Schedule implements Serializable {
 
+    private Integer scheduleId;
     private Professional professional;
+    private User user;
     private int day;
     private int month;
     private int year;
     private int hour;
     private int minute;
 
-    public Schedule(Professional professional, int day, int month, int year, int hour, int minute) {
+    public Schedule(Integer scheduleId, Professional professional, User user, int day, int month, int year, int hour, int minute) {
+        this.scheduleId = scheduleId;
         this.professional = professional;
+        this.user = user;
         this.day = day;
         this.month = month;
         this.year = year;
         this.hour = hour;
         this.minute = minute;
+    }
+
+    public int getScheduleId() {
+        return scheduleId;
+    }
+
+    public void setScheduleId(int scheduleId) {
+        this.scheduleId = scheduleId;
     }
 
     public Professional getProfessional() {
@@ -66,5 +78,17 @@ public class Schedule implements Serializable {
 
     public void setMinute(int minute) {
         this.minute = minute;
+    }
+
+    public void setScheduleId(Integer scheduleId) {
+        this.scheduleId = scheduleId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

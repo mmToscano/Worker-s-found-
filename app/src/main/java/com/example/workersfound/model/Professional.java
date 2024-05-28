@@ -17,6 +17,7 @@ public class Professional implements Serializable {
     private String typeOfService;
     private Address address;
     private ArrayList<ProfessionalService> servicos = new ArrayList<>();
+    private ArrayList<Schedule> schedules = new ArrayList<>();
 
     public Professional(Integer professionalId, Integer img, String name, String companyName, String typeOfService, Address address) {
         this.professionalId = professionalId;

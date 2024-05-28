@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.workersfound.R;
 import com.example.workersfound.databinding.ActivityMakeAppointmentBinding;
 import com.example.workersfound.fakeDatabases.ScheduleBD;
+import com.example.workersfound.fakeDatabases.UserBD;
 import com.example.workersfound.model.Professional;
 import com.example.workersfound.model.Schedule;
 
@@ -36,7 +37,7 @@ public class MakeAppointment extends AppCompatActivity {
             int hour = binding.timePicker.getHour();
             int minutes = binding.timePicker.getMinute();
 
-            bd.addData(new Schedule(professional, day, month, year, hour, minutes));
+            bd.addData(new Schedule(0, professional, UserBD.getInstance().getUser(), day, month, year, hour, minutes));
             finish();
         });
 
