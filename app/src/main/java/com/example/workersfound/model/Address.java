@@ -1,5 +1,8 @@
 package com.example.workersfound.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 public class Address implements Serializable {
@@ -10,12 +13,37 @@ public class Address implements Serializable {
     private String streetName;
     private String houseNumber;
 
-    public Address(int addressId, String city, String district, String streetName, String houseNumber) {
+    public Address(Integer addressId, String city, String district, String streetName, String houseNumber) {
         this.addressId = addressId;
         this.city = city;
         this.district = district;
         this.streetName = streetName;
         this.houseNumber = houseNumber;
+    }
+
+    public static Address fromJson(JSONObject jsonObject){
+        try{
+            Integer addressId = jsonObject.getInt("address_id");
+            String city = jsonObject.getString("city");
+            String district = jsonObject.getString("district");
+            String streetName = jsonObject.getString("street_name");
+            String houseNumber = jsonObject.getString("house_number");
+            return new Address(addressId, city, district, streetName, houseNumber);
+        }catch (JSONException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", city='" + city + '\'' +
+                ", district='" + district + '\'' +
+                ", streetName='" + streetName + '\'' +
+                ", houseNumber='" + houseNumber + '\'' +
+                '}';
     }
 
     public int getAddressId() {

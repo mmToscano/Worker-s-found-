@@ -14,18 +14,18 @@ public class Professional implements Serializable {
     private Integer img;
     private String name;
     private String companyName;
-    private String typeOfService;
     private Address address;
+    private Service service;
     private ArrayList<ProfessionalService> servicos = new ArrayList<>();
     private ArrayList<Schedule> schedules = new ArrayList<>();
 
-    public Professional(Integer professionalId, Integer img, String name, String companyName, String typeOfService, Address address) {
+    public Professional(Integer professionalId, Integer img, String name, String companyName, Address address, Service service) {
         this.professionalId = professionalId;
         this.img = img;
         this.name = name;
         this.companyName = companyName;
-        this.typeOfService = typeOfService;
         this.address = address;
+        this.service = service;
     }
     public Integer getProfessionalId() {
         return professionalId;
@@ -40,14 +40,6 @@ public class Professional implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getTypeOfService() {
-        return typeOfService;
-    }
-
-    public void setTypeOfService(String typeOfService) {
-        this.typeOfService = typeOfService;
     }
 
     public Address getAddres() {
@@ -78,4 +70,11 @@ public class Professional implements Serializable {
         this.img = img;
     }
 
+    public Service getService() {
+        return service;
+    }
+
+    public void setService(Service service) {
+        this.service = service;
+    }
 }

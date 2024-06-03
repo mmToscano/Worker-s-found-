@@ -12,6 +12,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.workersfound.adapter.ServicoAdapter;
@@ -19,6 +20,7 @@ import com.example.workersfound.databinding.ActivityHomeBinding;
 import com.example.workersfound.fakeDatabases.ServicoBD;
 import com.example.workersfound.model.Service;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,10 +31,6 @@ public class Home extends AppCompatActivity {
     private ActivityHomeBinding binding;
     private ServicoAdapter servicoAdapter;
     private ArrayList<Service> listaServices = new ArrayList<>();
-
-    private String result;
-
-    private String URL = "https://jsonplaceholder.typicode.com/posts/1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +57,7 @@ public class Home extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        binding.welcomingUserTxt.setText("Seja bem vindo, " + intent.getExtras().getString("user"));
+        binding.welcomingUserTxt.setText("Seja bem vindo, " + intent.getExtras().getString("nomeUser"));
 
         // Setup SearchView
         SearchView searchView = binding.pesquisa;
@@ -83,14 +81,51 @@ public class Home extends AppCompatActivity {
         listaServices.addAll(bd.getDataList());
         servicoAdapter.filter("");  // Faz com que mostre a lista completa quando inicializar a Home
         System.out.println("Começando connection");
-        //getServicosAPI("https://jsonplaceholder.typicode.com/posts/1");
+        getServicosAPI("http://localhost:9000/services");
     }
 
     private void getServicosAPI(String URL){
         RequestQueue queue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URL, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    // Loop through the array elements
+                    for (int i = 0; i < response.length(); i++) {
+                        // Get current json object
+                        JSONObject jsonObject = response.getJSONObject(i);
+
+                        // Get the JSON fields
+                        String id = jsonObject.getString("service_id");
+
+                        System.out.println(id);
+
+                        // You can add the title to a TextView or log it for now
+                        //binding.textExample.append(title + "\n");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // Handle error
+                binding.textExample.setText(error.toString());
+            }
+        });
+        queue.add(jsonArrayRequest);
+    }
+
+
+
+    /*
+    private void getServicosAPI(String URL){
+        RequestQueue queue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(JSONObject jsonObject) {
+            public void onResponse(JSONObject jsonObject) { //jsonObject é o objeto retornado. O getString é a maneira de pegar um campo em específico
                 try{
                     binding.textExample.setText(jsonObject.getString("title"));
                 }catch (JSONException e){
@@ -106,4 +141,6 @@ public class Home extends AppCompatActivity {
         queue.add(jsonObjectRequest);
 
     }
+
+     */
 }

@@ -1,7 +1,11 @@
 package com.example.workersfound.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class User implements Serializable {
 
@@ -20,6 +24,42 @@ public class User implements Serializable {
         this.nome = nome;
         this.address = address;
         this.phoneNumber = phoneNumber;
+    }
+
+    public static User fromJson(JSONObject jsonObject){
+        try{
+            Integer userId = jsonObject.getInt("user_id");
+            String email = jsonObject.getString("email");
+            String senha = jsonObject.getString("senha");
+            String nome = jsonObject.getString("nome");
+            String phoneNumber = jsonObject.getString("numero_telefone");
+            Address address = new Address(jsonObject.getInt("address_id"), jsonObject.getString("city"), jsonObject.getString("district"), jsonObject.getString("street_name"), jsonObject.getString("house_number"));
+            return new User(userId, email, senha, nome, address, phoneNumber);
+        }catch (JSONException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public boolean verificarSeExiste(String email, String senha){
+        if(Objects.equals(this.getEmail(), email) && Objects.equals(this.getSenha(), senha)){
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", nome='" + nome + '\'' +
+                ", address=" + address +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", schedules=" + schedules +
+                '}';
     }
 
     public Integer getUserId() {

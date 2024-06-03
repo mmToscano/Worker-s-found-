@@ -26,7 +26,6 @@ public class ProfessionalBD {
 //        Professional professional7 = new Professional(7, R.drawable.user_ic,"Zulu","Zulu bacana", "COSTUREIRO",  new Address("Uberlândia", "Luizote de freitas", "R. Roberto Margonari", "000"));
 //        Professional professional8 = new Professional(8, R.drawable.user_ic,"Jania","Jania unhas", "MANICURE", new Address("Uberlândia", "Tocantins", "R. Agenor Borges", "000"));
 //
-//
 //        professional1.getServicos().add(new ProfessionalService(0,0,"corte de cabelo", 35.0d));
 //        professional2.getServicos().add(new ProfessionalService(1,"corte de cabelo", 35.0d));
 //        professional3.getServicos().add(new ProfessionalService(2,"costura", 20.0d));
@@ -74,7 +73,7 @@ public class ProfessionalBD {
         ArrayList<Professional> professionals = new ArrayList<>();
 
         for(Professional item: dataList){
-            if(Objects.equals(item.getTypeOfService(), type)){
+            if(Objects.equals(item.getService().getName(), type)){
                 professionals.add(item);
             }
 

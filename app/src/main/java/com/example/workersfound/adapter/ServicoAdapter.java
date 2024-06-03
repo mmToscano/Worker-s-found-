@@ -56,7 +56,7 @@ public class ServicoAdapter extends RecyclerView.Adapter<ServicoAdapter.ServicoV
         } else {
             searchText = searchText.toLowerCase();
             for (Service service : listaServices) {
-                if (service.getname().toLowerCase().contains(searchText)) {
+                if (service.getName().toLowerCase().contains(searchText)) {
                     listaFiltradaServices.add(service);
                 }
             }
@@ -74,7 +74,7 @@ public class ServicoAdapter extends RecyclerView.Adapter<ServicoAdapter.ServicoV
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     Intent intent = new Intent(binding.getRoot().getContext(), ProfessionalsListing.class);
-                    intent.putExtra("service_type", listaFiltradaServices.get(position).getname());
+                    intent.putExtra("service_type", listaFiltradaServices.get(position).getName());
                     binding.getRoot().getContext().startActivity(intent);
                 }
             });

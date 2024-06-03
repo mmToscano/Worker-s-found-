@@ -34,7 +34,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
     @Override
     public void onBindViewHolder(@NonNull ScheduleAdapter.ScheduleViewHolder holder, int position) {
         Schedule schedule = listaSchedules.get(position);
-        String dateTime = schedule.getDay() + "/" + schedule.getMonth() + "/" + schedule.getYear() + " - " + schedule.getProfessional().getName() + "(" + schedule.getProfessional().getTypeOfService() + ")";
+        String dateTime = schedule.getDay() + "/" + schedule.getMonth() + "/" + schedule.getYear() + " - " + schedule.getProfessional().getName() + "(" + schedule.getProfessional().getService().getName() + ")";
 
         holder.binding.scheduleInfoTxt.setText(dateTime);
         //holder.binding.cardView.setCardBackgroundColor(alguma coisa que eu tenho que fazer depois);

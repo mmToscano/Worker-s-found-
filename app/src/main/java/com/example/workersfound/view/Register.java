@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.workersfound.R;
 import com.example.workersfound.databinding.ActivityRegisterBinding;
 import com.example.workersfound.fakeDatabases.UserBD;
+import com.example.workersfound.model.Address;
 import com.example.workersfound.model.User;
 
 public class Register extends AppCompatActivity {
@@ -36,7 +37,9 @@ public class Register extends AppCompatActivity {
             String numeroRua = binding.streetTxt.getText().toString();
             String numeroTelefone = binding.phoneNumberTxt.getText().toString();
 
-            User newUser = new User(0, email, senha, nome, estado, cidade, bairro, rua, numeroRua, numeroTelefone);
+            //tem que criar um objeto to tipo address e colocar ele aqui dentro
+            Address address = new Address(null, cidade, bairro, rua, numeroRua);
+            User newUser = new User(0, email, senha, nome, address, numeroTelefone);
             bd.replaceUser(newUser);
             finish();
         });
